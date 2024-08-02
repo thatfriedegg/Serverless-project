@@ -108,6 +108,7 @@ def lambda_handler(event, context):
 
 Now we will test our newly created function. Since we haven't created our DynamoDB or the API yet, we will do a simple echo operation. This function should output whatever intput we pass.
 1. We click the arrow on "Select a test event" and click the "configure test events'
+
 2. Paste the following JSON into the event. The operation dictates what the lambda function will perform for us. In this case, it would simply return the payload from input event as output. Then we click Create to save it.
 ```
 {
@@ -118,6 +119,7 @@ Now we will test our newly created function. Since we haven't created our Dynamo
     }
 }
 ```
+
 3. Click Test and it will execute the test event. We should see the following output in the console.
 
 ```
@@ -139,23 +141,23 @@ Create the DynamoDB table that the Lambda function will use.
 
 ## Create API
 ### To create the API
-    1. Go to API Gateway console
-    2. Click Create API
-    3. Select the REST API and then "Build"
-    4. Give the API name as "DynamoDBOperations", we will keep everything else as is and then click "Create API".
-    5. Now lets add a resource next.
+1. Go to API Gateway console
+2. Click Create API
+3. Select the REST API and then "Build"
+4. Give the API name as "DynamoDBOperations", we will keep everything else as is and then click "Create API".
+5. Now lets add a resource next.
 Click "Actions", then click "Create Resource"
-    6. Input "DunamoDBManager" in the resource Name, Resource Path will get populated. Then click "Create Resource".
-    7. Let's Create a POST Method for our API. With the "/dynamodbmanager" resource selected, Click "Actions" again and click "Create Method".
-    8. Select "POST" from the drop down, then click checkmark
-    9. The integration will come up automatically with "Lambda Function" option selected. Select "LambdaFunctionOverHttps" function that we created earlier. As you start typing the name your function name will show up. Select and click "Save". A popup window will come up to add resource ploicy to the lambda to be invoked by this API. Then click "OK".
+6. Input "DunamoDBManager" in the resource Name, Resource Path will get populated. Then click "Create Resource".
+7. Let's Create a POST Method for our API. With the "/dynamodbmanager" resource selected, Click "Actions" again and click "Create Method".
+8. Select "POST" from the drop down, then click checkmark
+9. The integration will come up automatically with "Lambda Function" option selected. Select "LambdaFunctionOverHttps" function that we created earlier. As you start typing the name your function name will show up. Select and click "Save". A popup window will come up to add resource ploicy to the lambda to be invoked by this API. Then click "OK".
 Our API-Lambda integration is now done!
 
 ## Deploy the API
 in this step we deploy the API that we created to a stage called prod.
-    1. Click "Actions", select "Deploy API"
-    2. Now it is going to ask you about stage. Select "[New Stage]" for "Deployment stage". Give "Prod" as "Stage name". Click "Deploy".
-    3. We are now all set to run our solution! To invoke our API endpoint, we need the endpoint URL. In the "Stages" screen expand the stage "Prod", select "POST" method, and copy the "Invoke URL" from screen.
+1. Click "Actions", select "Deploy API"
+2. Now it is going to ask you about stage. Select "[New Stage]" for "Deployment stage". Give "Prod" as "Stage name". Click "Deploy".
+3. We are now all set to run our solution! To invoke our API endpoint, we need the endpoint URL. In the "Stages" screen expand the stage "Prod", select "POST" method, and copy the "Invoke URL" from screen.
 
 ## Running our solution
 1. The Lambda funtion supports using the create operation to create an item in our DynamoDB table. To request this operation, use the following JSON:
